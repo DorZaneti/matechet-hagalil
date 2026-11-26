@@ -128,6 +128,14 @@ RULES
 10. question_to_customer: one short, polite Hebrew question that would resolve the open points, or null if none.
 11. assumptions: harmless interpretations only (e.g. how a relative date was resolved). Anything that changes what gets
     manufactured or who it is for goes in missing_or_unclear or the line's issues, not here.
+12. Keep missing_or_unclear and issues SHORT and only for blockers. The system already detects by itself, from your nulls
+    and flags, a missing client, size, quantity, finish or date, and history-derived lines, so do not restate those.
+    Use missing_or_unclear only for blockers the system cannot see (an attachment that is mentioned but missing,
+    contradictions, illegible text). Optional information that is simply not given is NOT a blocker and must not be
+    listed anywhere: PO number, split delivery, site/project, sender phone or email, contact name.
+    Use a line's issues only for real ambiguity in that line (one short sentence each). Do not explain things that are
+    clear from the text. An empty list is the normal case for a clear order.
+13. Finish by calling record_order. Do not answer in plain text.
 
 CLIENTS (id | name | other spellings | contacts)
 {clients}
@@ -241,8 +249,7 @@ def extract(msg: IntakeMessage, clients: list[Client], candidates: list[Candidat
     tool_choice: dict = {"type": "auto"}
 
     for turn in range(MAX_AGENT_TURNS):
-        if turn == MAX_AGENT_TURNS - 1:
-            tool_choice = {"type": "tool", "name": "record_order"}  # last turn: must answer
+        # Not forcing a specific tool: some models reject tool_choice of type tool/any. Instead an explicit instruction
         resp = client.messages.create(model=model, max_tokens=2500, system=system, tools=TOOLS,
                                       tool_choice=tool_choice, messages=messages)
         usage.add(resp.usage)
@@ -252,9 +259,8 @@ def extract(msg: IntakeMessage, clients: list[Client], candidates: list[Candidat
         if final is not None:
             trace.append({"tool": "record_order"})
             return final.input, usage, trace
-        if not tool_uses:  # answered in text: ask for the tool
-            tool_choice = {"type": "tool", "name": "record_order"}
-            messages.append({"role": "user", "content": "Call record_order with the result."})
+        if not tool_uses:  # answered in text: ask for the tool explicitly
+            messages.append({"role": "user", "content": "Call record_order now with the result. Do not answer in text."})
             continue
         results = []
         for b in tool_uses:
@@ -269,5 +275,7 @@ def extract(msg: IntakeMessage, clients: list[Client], candidates: list[Candidat
             else:
                 results.append({"type": "tool_result", "tool_use_id": b.id, "is_error": True,
                                 "content": "unknown tool"})
+        if turn == MAX_AGENT_TURNS - 2:
+            results.append({"type": "text", "text": "Now call record_order with the final result."})
         messages.append({"role": "user", "content": results})
     raise RuntimeError("agent did not call record_order")

@@ -148,6 +148,7 @@ class TestPipeline(unittest.TestCase):
         self.assertIn("ש.ג. עבודות עפר", req["system"][0]["text"])
         self.assertIn("2026-11-26", req["system"][0]["text"])
         self.assertTrue(all(t["strict"] for t in req["tools"]))
+        self.assertEqual(req["tool_choice"], {"type": "auto"})
         user_text = " ".join(b.get("text", "") for b in req["messages"][0]["content"])
         self.assertIn("מועמדים מהתאמה דטרמיניסטית: " + SG, user_text)
 
@@ -204,7 +205,8 @@ class TestPipeline(unittest.TestCase):
     def test_text_answer_then_forced_tool(self):
         fake = FakeClaude([[NS(type="text", text="ok")], [tool("record_order", FIXTURES[3])]])
         r = process(msg_for(EXAMPLES[2]), STORE, llm_client=fake)
-        self.assertEqual(fake.calls[1]["tool_choice"], {"type": "tool", "name": "record_order"})
+        self.assertEqual(fake.calls[1]["tool_choice"], {"type": "auto"})  # no forcing: an explicit instruction instead
+        self.assertIn("record_order", fake.calls[1]["messages"][-1]["content"])
         self.assertEqual(r.decision.status, "פתוחה")
 
     def test_portal_known_client_overrides(self):

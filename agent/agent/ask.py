@@ -55,7 +55,8 @@ TOOLS = [
 SYSTEM = """You answer customers of "מתכת הגליל" (a steel railings/gates factory) in the order-tracking portal.
 The customer is already identified: {client_name}. Today is {today}.
 
-- Always call get_my_orders first, then answer only from what it returns. Never guess a date, a stage or a quantity.
+- Always call get_my_orders first, then answer only from what it returns, and give the answer by calling reply
+  (never as plain text). Never guess a date, a stage or a quantity.
 - Answer in Hebrew, short and friendly (1-4 sentences), like a helpful office manager. Use order numbers.
 - If there is no planned delivery date, say it has not been set yet and that Rina will update, do not estimate.
   Painting is done by an external supplier and usually takes 3-5 working days, you may say that, as "בדרך כלל".
@@ -99,10 +100,8 @@ def answer(question: str, client_id: str, client_name: str, store, *, client=Non
                "cache_control": {"type": "ephemeral"}}]
     messages = [{"role": "user", "content": question}]
     usage = Usage()
-    tool_choice: dict = {"type": "tool", "name": "get_my_orders"}  # always start from the data
+    tool_choice: dict = {"type": "auto"}  # some models reject forcing a specific tool. The prompt says to start from get_my_orders
     for turn in range(3):
-        if turn == 2:
-            tool_choice = {"type": "tool", "name": "reply"}
         resp = client.messages.create(model=model, max_tokens=700, system=system, tools=TOOLS,
                                       tool_choice=tool_choice, messages=messages)
         usage.add(resp.usage)
@@ -119,9 +118,8 @@ def answer(question: str, client_id: str, client_name: str, store, *, client=Non
             else:
                 results.append({"type": "tool_result", "tool_use_id": b.id, "is_error": True, "content": "unknown tool"})
         if not results:
-            messages.append({"role": "user", "content": "Call reply with the answer."})
+            messages.append({"role": "user", "content": "Call get_my_orders first if you have not, then call reply. Do not answer in plain text."})
         else:
             messages.append({"role": "user", "content": results})
-        tool_choice = {"type": "auto"}
     return {"answer": "לא הצלחתי לענות כרגע. רינה מהמשרד תחזור אליכם.", "needs_human": True,
             "orders_mentioned": []}, usage
