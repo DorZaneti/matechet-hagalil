@@ -1,0 +1,227 @@
+{
+ "taken_from": "monday boards 5108619489/5108619492, 2026-11-26",
+ "clients": [
+  {
+   "id": "3388889795",
+   "name": "אב בניה בע\"מ",
+   "aliases": [
+    "א.ב. בנייה"
+   ],
+   "contacts": [
+    {
+     "name": "מוטי לוי",
+     "phone": "0501234567"
+    }
+   ]
+  },
+  {
+   "id": "3388890160",
+   "name": "קבוצת רותם יזמות",
+   "aliases": [
+    "קבוצת רותם",
+    "רותם יזמות"
+   ],
+   "contacts": [
+    {
+     "name": "סהר בן דוד",
+     "phone": "0527654321"
+    },
+    {
+     "name": "אורית",
+     "phone": "0541112233"
+    }
+   ]
+  },
+  {
+   "id": "3388876346",
+   "name": "ש.ג. עבודות עפר",
+   "aliases": [
+    "שג עבודות עפר"
+   ],
+   "contacts": [
+    {
+     "name": "שלמה",
+     "phone": "048123456"
+    }
+   ]
+  },
+  {
+   "id": "3388929463",
+   "name": "דני קבלנות",
+   "aliases": [],
+   "contacts": []
+  }
+ ],
+ "history": {
+  "3388889795": [
+   {
+    "id": "3388901972",
+    "number": "1046",
+    "date": "2026-11-11",
+    "status": "פתוחה",
+    "lines": [
+     {
+      "item": "מעקה מרפסת",
+      "qty": 40.0,
+      "color": "RAL 9005",
+      "width": 120.0,
+      "height": 100.0,
+      "stage": "בייצור",
+      "delivered": null
+     }
+    ],
+    "due": null
+   },
+   {
+    "id": "3388891034",
+    "number": "1042",
+    "date": "2026-11-04",
+    "status": "פתוחה",
+    "lines": [
+     {
+      "item": "שער חניה",
+      "qty": 1.0,
+      "color": "RAL 9005",
+      "width": 400.0,
+      "height": 180.0,
+      "stage": "בייצור",
+      "delivered": null
+     }
+    ],
+    "due": null
+   },
+   {
+    "id": "3388878408",
+    "number": "1041",
+    "date": "2026-11-03",
+    "status": "סופקה חלקית",
+    "lines": [
+     {
+      "item": "מעקה מרפסת",
+      "qty": 40.0,
+      "color": "RAL 9005",
+      "width": 120.0,
+      "height": 100.0,
+      "stage": "בצבע",
+      "delivered": 25
+     }
+    ],
+    "due": null
+   }
+  ],
+  "3388890160": [
+   {
+    "id": "3388898579",
+    "number": "1049",
+    "date": "2026-11-17",
+    "status": "פתוחה",
+    "lines": [
+     {
+      "item": "מעקה מרפסת",
+      "qty": 30.0,
+      "color": "RAL 7016",
+      "width": 90.0,
+      "height": 100.0,
+      "stage": "בצבע",
+      "delivered": null
+     }
+    ],
+    "due": null
+   },
+   {
+    "id": "3388902308",
+    "number": "1044",
+    "date": "2026-11-06",
+    "status": "פתוחה",
+    "lines": [
+     {
+      "item": "מעקה מרפסת",
+      "qty": 8.0,
+      "color": "RAL 7016",
+      "width": 90.0,
+      "height": 100.0,
+      "stage": "ממתין",
+      "delivered": null
+     }
+    ],
+    "due": null
+   },
+   {
+    "id": "3388890749",
+    "number": "1043",
+    "date": "2026-11-05",
+    "status": "פתוחה",
+    "lines": [
+     {
+      "item": "מעקה מדרגות",
+      "qty": 12.0,
+      "color": "RAL 7016",
+      "width": null,
+      "height": null,
+      "stage": "חיתוך",
+      "delivered": null
+     }
+    ],
+    "due": null
+   }
+  ],
+  "3388876346": [
+   {
+    "id": "3388890750",
+    "number": "1048",
+    "date": "2026-11-15",
+    "status": "בוטלה",
+    "lines": [
+     {
+      "item": "מסגרת פלדה",
+      "qty": 4.0,
+      "color": "ללא צבע",
+      "width": 250.0,
+      "height": 300.0,
+      "stage": null,
+      "delivered": null
+     }
+    ],
+    "due": null
+   },
+   {
+    "id": "3388930227",
+    "number": "1045",
+    "date": "2026-11-10",
+    "status": "סופקה",
+    "lines": [
+     {
+      "item": "מסגרת פלדה",
+      "qty": 6.0,
+      "color": "ללא צבע",
+      "width": 200.0,
+      "height": 300.0,
+      "stage": "נשלח",
+      "delivered": 6
+     }
+    ],
+    "due": null
+   }
+  ],
+  "3388929463": [
+   {
+    "id": "3388891263",
+    "number": "1047",
+    "date": "2026-11-12",
+    "status": "פתוחה",
+    "lines": [
+     {
+      "item": "שער כניסה",
+      "qty": 1.0,
+      "color": "RAL 6005",
+      "width": 100.0,
+      "height": 200.0,
+      "stage": "ריתוך",
+      "delivered": null
+     }
+    ],
+    "due": null
+   }
+  ]
+ }
+}

@@ -1,0 +1,387 @@
+{
+  "clients": [
+    {
+      "key": "c1",
+      "name": "אב בניה בע\"מ",
+      "aliases": [
+        "א.ב. בנייה"
+      ],
+      "contacts": [
+        {
+          "name": "מוטי לוי",
+          "phone": "050-1234567",
+          "phone_e164": "+972501234567"
+        }
+      ],
+      "primary_contact": "מוטי לוי",
+      "primary_phone": "050-1234567",
+      "primary_phone_e164": "+972501234567"
+    },
+    {
+      "key": "c2",
+      "name": "קבוצת רותם יזמות",
+      "aliases": [
+        "קבוצת רותם",
+        "רותם יזמות"
+      ],
+      "contacts": [
+        {
+          "name": "סהר בן דוד",
+          "phone": "052-7654321",
+          "phone_e164": "+972527654321"
+        },
+        {
+          "name": "אורית",
+          "phone": "054-1112233",
+          "phone_e164": "+972541112233"
+        }
+      ],
+      "primary_contact": "סהר בן דוד",
+      "primary_phone": "052-7654321",
+      "primary_phone_e164": "+972527654321"
+    },
+    {
+      "key": "c3",
+      "name": "ש.ג. עבודות עפר",
+      "aliases": [
+        "שג עבודות עפר"
+      ],
+      "contacts": [
+        {
+          "name": "שלמה",
+          "phone": "04-8123456",
+          "phone_e164": "+97248123456"
+        }
+      ],
+      "primary_contact": "שלמה",
+      "primary_phone": "04-8123456",
+      "primary_phone_e164": "+97248123456"
+    },
+    {
+      "key": "c4",
+      "name": "דני קבלנות",
+      "aliases": [],
+      "contacts": [],
+      "primary_contact": null,
+      "primary_phone": null,
+      "primary_phone_e164": null
+    }
+  ],
+  "orders": [
+    {
+      "source_row": 2,
+      "num": "1041",
+      "date": "2026-11-03",
+      "client_raw": "א.ב. בנייה",
+      "contact": "מוטי לוי",
+      "phone": "050-1234567",
+      "phone_e164": "+972501234567",
+      "order_status": "סופקה חלקית",
+      "billing": "לחיוב",
+      "urgent": false,
+      "project": null,
+      "notes": "סופקו 25",
+      "line": {
+        "item_type": "מעקה מרפסת",
+        "width": 120.0,
+        "height": 100.0,
+        "dims_raw": "120x100",
+        "qty": 40,
+        "delivered": 25,
+        "color": "RAL 9005",
+        "stage": "בצבע"
+      },
+      "fixes": [
+        "תאריך '03/11/2026' ← 2026-11-03",
+        "כמות '40 יח'' ← 40",
+        "אספקה חלקית מההערות: 25 מתוך 40 ← סטטוס 'סופקה חלקית'",
+        "לקוח 'א.ב. בנייה' אוחד ל-'אב בניה בע\"מ'",
+        "איש קשר 'מוטי' ← 'מוטי לוי'"
+      ],
+      "review": [],
+      "client_key": "c1"
+    },
+    {
+      "source_row": 3,
+      "num": "1042",
+      "date": "2026-11-04",
+      "client_raw": "אב בניה בע\"מ",
+      "contact": "מוטי לוי",
+      "phone": "050-1234567",
+      "phone_e164": "+972501234567",
+      "order_status": "פתוחה",
+      "billing": null,
+      "urgent": true,
+      "project": null,
+      "notes": "דחוף!!",
+      "line": {
+        "item_type": "שער חניה",
+        "width": 400.0,
+        "height": 180.0,
+        "dims_raw": "400x180",
+        "qty": 1,
+        "delivered": null,
+        "color": "RAL 9005",
+        "stage": "בייצור"
+      },
+      "fixes": [
+        "טלפון '0501234567' ← 050-1234567",
+        "'דחוף' מההערות ← עמודת דחוף"
+      ],
+      "review": [
+        "שם צבע 'שחור' ← RAL 9005 (הנחה, לאשר מול הלקוח)",
+        "סטטוס 'בייצור' בלי שלב מדויק; לעדכן שלב"
+      ],
+      "client_key": "c1"
+    },
+    {
+      "source_row": 4,
+      "num": "1043",
+      "date": "2026-11-05",
+      "client_raw": "קבוצת רותם יזמות",
+      "contact": "סהר בן דוד",
+      "phone": "052-7654321",
+      "phone_e164": "+972527654321",
+      "order_status": "פתוחה",
+      "billing": null,
+      "urgent": false,
+      "project": null,
+      "notes": "תכנית במייל",
+      "line": {
+        "item_type": "מעקה מדרגות",
+        "width": null,
+        "height": null,
+        "dims_raw": "לפי תכנית",
+        "qty": 12,
+        "delivered": null,
+        "color": "RAL 7016",
+        "stage": "חיתוך"
+      },
+      "fixes": [
+        "תאריך '5.11.26' ← 2026-11-05",
+        "איש קשר 'סהר' ← 'סהר בן דוד'",
+        "טלפון הושלם מכרטיס הלקוח: 052-7654321"
+      ],
+      "review": [
+        "מידות לא מספריות ('לפי תכנית'); נשמר הטקסט המקורי"
+      ],
+      "client_key": "c2"
+    },
+    {
+      "source_row": 5,
+      "num": "1044",
+      "date": "2026-11-06",
+      "client_raw": "רותם יזמות",
+      "contact": "סהר בן דוד",
+      "phone": "052-7654321",
+      "phone_e164": "+972527654321",
+      "order_status": "פתוחה",
+      "billing": null,
+      "urgent": false,
+      "project": null,
+      "notes": null,
+      "line": {
+        "item_type": "מעקה מרפסת",
+        "width": 90.0,
+        "height": 100.0,
+        "dims_raw": "90x100",
+        "qty": 8,
+        "delivered": null,
+        "color": "RAL 7016",
+        "stage": "ממתין"
+      },
+      "fixes": [
+        "תאריך '06/11/2026' ← 2026-11-06",
+        "כמות במילים 'שמונה' ← 8",
+        "לקוח 'רותם יזמות' אוחד ל-'קבוצת רותם יזמות'"
+      ],
+      "review": [],
+      "client_key": "c2"
+    },
+    {
+      "source_row": 6,
+      "num": "1045",
+      "date": "2026-11-10",
+      "client_raw": "ש.ג. עבודות עפר",
+      "contact": "שלמה",
+      "phone": "04-8123456",
+      "phone_e164": "+97248123456",
+      "order_status": "סופקה",
+      "billing": "לחיוב",
+      "urgent": false,
+      "project": null,
+      "notes": "חשבונית?",
+      "line": {
+        "item_type": "מסגרת פלדה",
+        "width": 200.0,
+        "height": 300.0,
+        "dims_raw": "200x300",
+        "qty": 6,
+        "delivered": 6,
+        "color": "ללא צבע",
+        "stage": "נשלח"
+      },
+      "fixes": [
+        "תאריך '10/11/2026' ← 2026-11-10",
+        "כמות '6 יח'' ← 6"
+      ],
+      "review": [
+        "סופקה ולא ברור אם חויבה ('חשבונית?'); סומן 'לחיוב'"
+      ],
+      "client_key": "c3"
+    },
+    {
+      "source_row": 7,
+      "num": "1046",
+      "date": "2026-11-11",
+      "client_raw": "א.ב. בנייה",
+      "contact": "מוטי לוי",
+      "phone": "050-1234567",
+      "phone_e164": "+972501234567",
+      "order_status": "פתוחה",
+      "billing": null,
+      "urgent": false,
+      "project": null,
+      "notes": "כפול של 1041?",
+      "line": {
+        "item_type": "מעקה מרפסת",
+        "width": 120.0,
+        "height": 100.0,
+        "dims_raw": "120x100",
+        "qty": 40,
+        "delivered": null,
+        "color": "RAL 9005",
+        "stage": "בייצור"
+      },
+      "fixes": [
+        "לקוח 'א.ב. בנייה' אוחד ל-'אב בניה בע\"מ'",
+        "איש קשר 'מוטי' ← 'מוטי לוי'"
+      ],
+      "review": [
+        "לתאריך '11/11' אין שנה; הושלמה 2026 לפי שאר השורות",
+        "סטטוס 'בייצור' בלי שלב מדויק; לעדכן שלב",
+        "בהערות: חשד לכפילות של 1041"
+      ],
+      "client_key": "c1"
+    },
+    {
+      "source_row": 8,
+      "num": "1047",
+      "date": "2026-11-12",
+      "client_raw": "דני קבלנות",
+      "contact": null,
+      "phone": null,
+      "phone_e164": null,
+      "order_status": "פתוחה",
+      "billing": null,
+      "urgent": false,
+      "project": null,
+      "notes": "רינה תברר",
+      "line": {
+        "item_type": "שער כניסה",
+        "width": 100.0,
+        "height": 200.0,
+        "dims_raw": "100x200",
+        "qty": 1,
+        "delivered": null,
+        "color": "RAL 6005",
+        "stage": "ריתוך"
+      },
+      "fixes": [
+        "תאריך '12/11/2026' ← 2026-11-12"
+      ],
+      "review": [
+        "איש קשר חסר",
+        "טלפון חסר",
+        "פרטים חסרים לפי ההערות ('תברר')"
+      ],
+      "client_key": "c4"
+    },
+    {
+      "source_row": 9,
+      "num": "1048",
+      "date": "2026-11-15",
+      "client_raw": "שג עבודות עפר",
+      "contact": "שלמה",
+      "phone": "04-8123456",
+      "phone_e164": "+97248123456",
+      "order_status": "בוטלה",
+      "billing": null,
+      "urgent": false,
+      "project": null,
+      "notes": null,
+      "line": {
+        "item_type": "מסגרת פלדה",
+        "width": 250.0,
+        "height": 300.0,
+        "dims_raw": "250x300",
+        "qty": 4,
+        "delivered": null,
+        "color": "ללא צבע",
+        "stage": null
+      },
+      "fixes": [
+        "תאריך '2026/11/15' ← 2026-11-15",
+        "טלפון '048123456' ← 04-8123456",
+        "לקוח 'שג עבודות עפר' אוחד ל-'ש.ג. עבודות עפר'"
+      ],
+      "review": [],
+      "client_key": "c3"
+    },
+    {
+      "source_row": 10,
+      "num": "1049",
+      "date": "2026-11-17",
+      "client_raw": "קבוצת רותם",
+      "contact": "אורית",
+      "phone": "054-1112233",
+      "phone_e164": "+972541112233",
+      "order_status": "פתוחה",
+      "billing": null,
+      "urgent": false,
+      "project": "חדרה",
+      "notes": "פרויקט חדרה",
+      "line": {
+        "item_type": "מעקה מרפסת",
+        "width": 90.0,
+        "height": 100.0,
+        "dims_raw": "90X100",
+        "qty": 30,
+        "delivered": null,
+        "color": "RAL 7016",
+        "stage": "בצבע"
+      },
+      "fixes": [
+        "תאריך '17/11/2026' ← 2026-11-17",
+        "כמות '30 יח' ← 30",
+        "מידות '90X100' ← 90x100",
+        "פרויקט מההערות ← 'חדרה'",
+        "לקוח 'קבוצת רותם' אוחד ל-'קבוצת רותם יזמות'"
+      ],
+      "review": [
+        "שם צבע 'אפור אנתרציט' ← RAL 7016 (הנחה, לאשר מול הלקוח)"
+      ],
+      "client_key": "c2"
+    }
+  ],
+  "skipped": [
+    {
+      "source_row": 11,
+      "num": "1050",
+      "reason": "פנייה/ליד בלי לקוח ובלי פריט מוגדר. לא נפתחה הזמנה ולא נפתח לקוח; להעביר לרינה להצעת מחיר",
+      "raw": {
+        "num": "1050",
+        "date": "18/11/2026",
+        "client": "חברה חדשה - לברר",
+        "contact": "",
+        "phone": "052-9998877",
+        "item": "מעקות",
+        "dims": "",
+        "qty": "",
+        "color": "",
+        "status": "להצעת מחיר",
+        "notes": "התקשרו מהאתר"
+      }
+    }
+  ]
+}

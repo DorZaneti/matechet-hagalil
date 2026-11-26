@@ -1,0 +1,24 @@
+# Render Blueprint: the agent service (parts C and D). New → Blueprint → this repo.
+services:
+  - type: web
+    name: matechet-agent
+    runtime: python
+    rootDir: agent
+    region: frankfurt          # closest to Israel
+    plan: free                 # sleeps after 15 minutes. For production: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn agent.server:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: ANTHROPIC_API_KEY
+        sync: false            # you enter it in Render when creating the service
+      - key: MONDAY_TOKEN
+        sync: false
+      - key: AGENT_SHARED_SECRET
+        generateValue: true    # copy the generated value into the portal's AGENT_SHARED_SECRET in Vercel
+      - key: INTAKE_SECRET
+        generateValue: true
+      - key: AGENT_MODEL
+        value: claude-sonnet-5-5
