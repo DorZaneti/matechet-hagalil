@@ -155,8 +155,8 @@ def _selftest(model: str) -> None:
     print("SELFTEST done", flush=True)
 
 
-@app.get("/selftest")
-def selftest(secret: str, tasks: BackgroundTasks, model: str = "claude-sonnet-5-5"):
+@app.get("/selftest/{model}")
+def selftest(model: str, secret: str, tasks: BackgroundTasks):
     """Temporary: enabled only while EVAL_SECRET is set in Render. Results go to the log."""
     _check(secret, "EVAL_SECRET")
     from .config import PRICES
