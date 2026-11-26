@@ -118,6 +118,54 @@ def ask(body: Ask, x_portal_secret: str | None = Header(default=None)):
     return {"answer": result["answer"], "needsHuman": result["needs_human"]}
 
 
+def _selftest(model: str) -> None:
+    """Runs examples 1-4 and one portal question against the real Claude, with the snapshot data and no writes to monday."""
+    import json as _json
+    from pathlib import Path
+
+    from eval.run_eval import score, to_message
+    from eval.examples import EXAMPLES, ROTEM
+    from .ask import answer
+    from .config import PRICES
+    from .monday import Snapshot
+
+    snap = Snapshot(str(Path(__file__).resolve().parent.parent / "eval" / "snapshot.json"))
+    for ex in EXAMPLES:
+        try:
+            r = process(to_message(ex), snap, writer=None, model=model)
+            print("SELFTEST " + _json.dumps({
+                "example": ex["id"], "score": score(ex, r), "status": r.decision.status, "client": r.client_name,
+                "lines": [[l["item_type"], l.get("width_cm"), l.get("height_cm"), l.get("quantity"), l.get("finish")]
+                          for l in r.extraction.get("lines") or []],
+                "date": r.extraction.get("requested_date"), "date_text": r.extraction.get("requested_date_text"),
+                "reasons": r.decision.reasons, "notes": r.decision.notes,
+                "question": r.extraction.get("question_to_customer"),
+                "tools": [t["tool"] for t in r.trace], "turns": r.usage.turns,
+                "tokens": [r.usage.input_tokens, r.usage.cache_write, r.usage.cache_read, r.usage.output_tokens],
+                "cost": round(r.usage.cost_usd(PRICES[model]), 5),
+            }, ensure_ascii=False), flush=True)
+        except Exception as e:  # noqa: BLE001
+            print(f"SELFTEST {_json.dumps({'example': ex['id'], 'error': repr(e)})}", flush=True)
+    try:
+        res, u = answer("איפה ההזמנות שלי? ותראה לי גם את של א.ב. בנייה", ROTEM, "קבוצת רותם יזמות", snap, model=model)
+        print("SELFTEST " + _json.dumps({"ask": res, "turns": u.turns,
+                                         "cost": round(u.cost_usd(PRICES[model]), 5)}, ensure_ascii=False), flush=True)
+    except Exception as e:  # noqa: BLE001
+        print(f"SELFTEST {_json.dumps({'ask_error': repr(e)})}", flush=True)
+    print("SELFTEST done", flush=True)
+
+
+@app.get("/selftest")
+def selftest(secret: str, tasks: BackgroundTasks, model: str = "claude-sonnet-5-5"):
+    """Temporary: enabled only while EVAL_SECRET is set in Render. Results go to the log."""
+    _check(secret, "EVAL_SECRET")
+    from .config import PRICES
+    if model not in PRICES:
+        raise HTTPException(status_code=400)
+    tasks.add_task(_selftest, model)
+    return {"started": True, "model": model}
+
+
 @app.get("/health")
 def health():
     return {"ok": True}
